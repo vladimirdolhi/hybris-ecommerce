@@ -303,5 +303,6 @@
     <extension name='xyformsservices' />
     <extension name='xyformsstorefrontcommons' />
     <extension name='xyformsweb' />
+    <extension name="questions" />
   </extensions>
 </hybrisconfig>
