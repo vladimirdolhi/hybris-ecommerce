@@ -1,6 +1,6 @@
 package com.app.questions.facade.impl;
 
-import com.app.questions.data.ProductData;
+import de.hybris.platform.commercefacades.product.data.ProductData;
 import com.app.questions.facade.ProductQuestionsFacade;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.product.ProductService;

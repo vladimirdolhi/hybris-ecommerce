@@ -1,6 +1,6 @@
 package com.app.questions.populator;
 
-import com.app.questions.data.ProductData;
+import de.hybris.platform.commercefacades.product.data.ProductData;
 import com.app.questions.data.QuestionData;
 import com.app.questions.model.QuestionModel;
 import de.hybris.platform.converters.Converters;

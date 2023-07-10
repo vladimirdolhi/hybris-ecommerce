@@ -11,15 +11,10 @@ INSERT_UPDATE Customer; uid[unique = true]   ; name
                       ; ann@gmail.com        ; Ann Taylor
 
 
-INSERT_UPDATE Product; code[unique = true]; name[lang = en]; name[lang = de]; unit(code); description[lang = en]       ; description[lang = de]              ; $approved; $catalogVersion
-                     ; sampleproduct1     ; SampleProduct1 ; Testprodukt1   ; pieces    ; "Sample product description" ; "Dies ist ein Testprodukt"          ;
-                     ; sampleproduct2     ; SampleProduct2 ; Testprodukt2   ; pieces    ; "Another sample product"     ; "Dies ist ein weiteres Testprodukt" ;
-
-
 INSERT_UPDATE Question; code[unique = true]; product(code, $catalogVersion); questionCustomer(uid); answerCustomer(uid)  ; question                                ; answer;
-                      ; Q1          ; sampleproduct1                ; sampleuser@gmail.com ; ann@gmail.com        ; Is it worth buying?                     ; Definitely yes!
-                      ; Q2          ; sampleproduct2                ; ann@gmail.com        ;                      ; What version of bluetooth is supported? ;
-                      ; Q3          ; sampleproduct2                ; anonymous            ;                      ; Are there plans for new colors?         ;
-                      ; Q4          ; 553637                        ; ann@gmail.com        ; sampleuser@gmail.com ; What version of bluetooth is supported? ; The latest!
-                      ; Q5          ; 553637                        ; anonymous            ;                      ; Are there plans for new colors?         ;
-                      ; Q6          ; 553637                        ; anonymous            ; anonymous            ; What about camera quality               ; Prety normal
+                      ; Q1                 ; 300938                        ; sampleuser@gmail.com ; ann@gmail.com        ; Is it worth buying?                     ; Definitely yes!
+                      ; Q2                 ; 300938                        ; ann@gmail.com        ;                      ; What version of bluetooth is supported? ;
+                      ; Q3                 ; 1981415                       ; anonymous            ;                      ; Are there plans for new colors?         ;
+                      ; Q4                 ; 553637                        ; ann@gmail.com        ; sampleuser@gmail.com ; What version of bluetooth is supported? ; The latest!
+                      ; Q5                 ; 553637                        ; anonymous            ;                      ; Are there plans for new colors?         ;
+                      ; Q6                 ; 553637                        ; anonymous            ; anonymous            ; What about camera quality               ; Prety normal

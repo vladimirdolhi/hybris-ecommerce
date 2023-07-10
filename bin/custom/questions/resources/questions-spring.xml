@@ -51,7 +51,7 @@
 		  class="com.app.questions.populator.ProductQuestionsPopulator"/>
 
 	<bean id="productQuestionsConverter"  parent="abstractPopulatingConverter">
-		<property name="targetClass" value="com.app.questions.data.ProductData"/>
+		<property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>
 		<property name="populators">
 			<list merge="true">
 				<ref bean="productQuestionsPopulator"/>

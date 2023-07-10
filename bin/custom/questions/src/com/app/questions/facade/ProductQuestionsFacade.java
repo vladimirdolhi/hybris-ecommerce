@@ -1,6 +1,6 @@
 package com.app.questions.facade;
 
-import com.app.questions.data.ProductData;
+import de.hybris.platform.commercefacades.product.data.ProductData;
 
 public interface ProductQuestionsFacade {
 

@@ -1,6 +1,6 @@
 package com.app.questions.controllers.cms;
 
-import com.app.questions.data.ProductData;
+import de.hybris.platform.commercefacades.product.data.ProductData;
 import com.app.questions.facade.ProductQuestionsFacade;
 import com.app.questions.model.QuestionCMSComponentModel;
 import de.hybris.platform.addonsupport.controllers.cms.AbstractCMSAddOnComponentController;

@@ -15,7 +15,7 @@
 		<property name="answerCustomer" type="String"/>
 	</bean>
 
-	<bean class="com.app.questions.data.ProductData">
+	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
 		<property name="questions" type="java.util.List&lt;com.app.questions.data.QuestionData&gt;"/>
 	</bean>
 	
