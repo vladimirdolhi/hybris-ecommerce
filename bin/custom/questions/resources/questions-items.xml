@@ -41,5 +41,17 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+		<itemtype code="QuestionCMSComponent" extends="SimpleCMSComponent" jaloclass="com.app.questions.jalo.QuestionCMSComponent">
+			<attributes>
+				<attribute qualifier="numberOfQuestionsToShow" type="java.lang.Integer">
+					<modifiers optional="false"/>
+					<defaultvalue>3</defaultvalue>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="fontSize" type="java.lang.Integer">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
 	</itemtypes>
 </items>
