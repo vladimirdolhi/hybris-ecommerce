@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<relations>
+		<relation code="ProductToQuestions" localized="false">
+			<sourceElement type="Product" qualifier="product" cardinality="one"/>
+			<targetElement type="Question" qualifier="questions" cardinality="many"/>
+		</relation>
+	</relations>
+
+	<itemtypes>
+		<itemtype code="Question">
+			<deployment table="question" typecode="24243"/>
+			<attributes>
+				<attribute qualifier="code" type="java.lang.String">
+					<persistence type="property"/>
+					<modifiers unique="true" optional="false" initial="true"/>
+				</attribute>
+				<attribute qualifier="question" type="java.lang.String">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+				<attribute qualifier="questionCustomer" type="Customer">
+					<persistence type="property"/>
+					<modifiers optional="false" initial="true"/>
+				</attribute>
+				<attribute qualifier="answer" type="java.lang.String">
+					<persistence type="property"/>
+					<modifiers read="true" write="true" search="true"/>
+				</attribute>
+				<attribute qualifier="answerCustomer" type="Customer">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype code="QuestionCMSComponent" extends="SimpleCMSComponent" jaloclass="com.app.questions.jalo.QuestionCMSComponent">
+			<attributes>
+				<attribute qualifier="numberOfQuestionsToShow" type="java.lang.Integer">
+					<modifiers optional="false"/>
+					<defaultvalue>3</defaultvalue>
+					<persistence type="property"/>
+				</attribute>
+				<attribute qualifier="fontSize" type="java.lang.Integer">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
+</items>

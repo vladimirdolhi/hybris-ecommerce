@@ -2625,7 +2625,7 @@
         
         
         
-        
+        <requires-extension name="questions"/>
         <requires-extension name="adaptivesearchsamplesaddon"/>
         <requires-extension name="assistedservicecustomerinterestsaddon"/>
                 
