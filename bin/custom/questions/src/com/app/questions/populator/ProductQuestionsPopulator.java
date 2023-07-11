@@ -1,5 +1,6 @@
 package com.app.questions.populator;
 
+import de.hybris.platform.commercefacades.product.converters.populator.AbstractProductPopulator;
 import de.hybris.platform.commercefacades.product.data.ProductData;
 import com.app.questions.data.QuestionData;
 import com.app.questions.model.QuestionModel;
@@ -11,13 +12,14 @@ import de.hybris.platform.servicelayer.dto.converter.Converter;
 
 import javax.annotation.Resource;
 
-public class ProductQuestionsPopulator implements Populator<ProductModel, ProductData> {
+public class ProductQuestionsPopulator<SOURCE extends ProductModel, TARGET extends ProductData>
+        extends AbstractProductPopulator<SOURCE, TARGET> {
 
     @Resource
     private Converter<QuestionModel, QuestionData> questionConverter;
 
     @Override
-    public void populate(ProductModel source, ProductData target) throws ConversionException {
+    public void populate(final SOURCE source, final TARGET target) throws ConversionException {
         target.setQuestions(Converters.convertAll(source.getQuestions(), questionConverter));
     }
 }

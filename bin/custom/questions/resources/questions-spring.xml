@@ -48,7 +48,8 @@
 	</bean>
 
 	<bean id="productQuestionsPopulator"
-		  class="com.app.questions.populator.ProductQuestionsPopulator"/>
+		  class="com.app.questions.populator.ProductQuestionsPopulator"
+		  parent="baseProductPopulator"/>
 
 	<bean id="productQuestionsConverter"  parent="abstractPopulatingConverter">
 		<property name="targetClass" value="de.hybris.platform.commercefacades.product.data.ProductData"/>
@@ -61,5 +62,12 @@
 
 	<bean id="productQuestionsFacade"
 		  class="com.app.questions.facade.impl.DefaultProductQuestionsFacade"/>
+
+	<bean parent="configurablePopulatorModification">
+		<property name="target" ref="productConfiguredPopulator" />
+		<property name="keyType" value="de.hybris.platform.commercefacades.product.ProductOption" />
+		<property name="key" value="QUESTIONS" />
+		<property name="add" ref="productQuestionsPopulator" />
+	</bean>
 
 </beans>
