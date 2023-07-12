@@ -9,6 +9,8 @@ $approved = approvalstatus(code)[default='approved']
 INSERT_UPDATE Customer; uid[unique = true]   ; name
                       ; sampleuser@gmail.com ; Jhon Lock
                       ; ann@gmail.com        ; Ann Taylor
+                      ; jack@gmail.com       ; Jack Jones
+                      ; gregory@gmail.com    ; Gregory Smith
 
 
 INSERT_UPDATE Question; code[unique = true]; product(code, $catalogVersion); questionCustomer(uid); answerCustomer(uid)  ; question                                ; answer;
@@ -17,4 +19,10 @@ INSERT_UPDATE Question; code[unique = true]; product(code, $catalogVersion); que
                       ; Q3                 ; 1981415                       ; anonymous            ;                      ; Are there plans for new colors?         ;
                       ; Q4                 ; 553637                        ; ann@gmail.com        ; sampleuser@gmail.com ; What version of bluetooth is supported? ; The latest!
                       ; Q5                 ; 553637                        ; anonymous            ;                      ; Are there plans for new colors?         ;
-                      ; Q6                 ; 553637                        ; anonymous            ; anonymous            ; What about camera quality               ; Prety normal
+                      ; Q6                 ; 553637                        ; anonymous            ; anonymous            ; What about camera quality?              ; Prety normal
+                      ; Q7                 ; 2053266                       ; anonymous            ; anonymous            ; Is the battery life enough?             ; Yes
+                      ; Q8                 ; 2053266                       ; gregory@gmail.com    ; jack@gmail.com       ; Is it good at night time?               ; Yes
+                      ; Q9                 ; 2934302                       ; gregory@gmail.com    ; anonymous            ; Is it easy to carry?                    ; No
+                      ; Q10                ; 2934302                       ; anonymous            ;                      ; What about camera quality?              ;
+                      ; Q11                ; 2934302                       ; anonymous            ;                      ; Is it worth buying?                     ;
+

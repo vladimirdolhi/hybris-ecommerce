@@ -5,7 +5,6 @@ import de.hybris.platform.commercefacades.product.data.ProductData;
 import com.app.questions.data.QuestionData;
 import com.app.questions.model.QuestionModel;
 import de.hybris.platform.converters.Converters;
-import de.hybris.platform.converters.Populator;
 import de.hybris.platform.core.model.product.ProductModel;
 import de.hybris.platform.servicelayer.dto.converter.ConversionException;
 import de.hybris.platform.servicelayer.dto.converter.Converter;
@@ -21,5 +20,6 @@ public class ProductQuestionsPopulator<SOURCE extends ProductModel, TARGET exten
     @Override
     public void populate(final SOURCE source, final TARGET target) throws ConversionException {
         target.setQuestions(Converters.convertAll(source.getQuestions(), questionConverter));
+        target.setQuestionsCount(source.getQuestions().size());
     }
 }

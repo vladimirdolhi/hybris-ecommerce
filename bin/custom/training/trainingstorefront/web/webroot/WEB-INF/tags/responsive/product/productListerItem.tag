@@ -47,6 +47,10 @@
 		</c:if>
 
 
+		<c:if test="${not empty product.questionsCount}">
+			<br/>
+			<p>Questions: ${product.questionsCount}</p>
+		</c:if>
 
 		<c:set var="product" value="${product}" scope="request"/>
 		<c:set var="addToCartText" value="${addToCartText}" scope="request"/>

@@ -70,4 +70,16 @@
 		<property name="add" ref="productQuestionsPopulator" />
 	</bean>
 
+	<bean id="productQuestionsCountProvider"
+		  class="com.app.questions.provider.ProductQuestionsCountProvider"
+		  parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
+
+	<alias name="searchProductQuestionPopulator" alias="commerceSearchResultProductPopulator"/>
+	<bean id="searchProductQuestionPopulator"
+		  class="com.app.questions.populator.SearchProductQuestionPopulator"
+		  parent="variantCommerceSearchResultProductPopulator">
+	</bean>
+
 </beans>
