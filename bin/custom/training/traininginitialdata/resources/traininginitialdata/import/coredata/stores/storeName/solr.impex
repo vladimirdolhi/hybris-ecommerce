@@ -12,7 +12,7 @@ $searchConfigName=
 $facetSearchConfigName=
 $facetSearchConfigDescription=
 $searchIndexNamePrefix=
-$solrIndexedType=
+$solrIndexedType= electronicsProductType
 $indexBaseSite=
 $indexLanguages=ja,en,de,zh
 $indexCurrencies=JPY,USD
@@ -21,6 +21,10 @@ $indexCurrencies=JPY,USD
 #
 # Setup the Solr server, indexer, and search configs
 #
+
+#Impex for adding new indexing property
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]   ; type(code); localized[default = false]; fieldValueProvider
+                                 ; $solrIndexedType                   ; questionsCount ; int       ;                    ; productQuestionsCountProvider
 
 # Create the solr server configuration
 INSERT_UPDATE SolrServerConfig;name[unique=true];mode(code)
