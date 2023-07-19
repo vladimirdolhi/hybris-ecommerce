@@ -1,0 +1,32 @@
+$contentCatalog = electronicsContentCatalog
+$contentCatalogName = Electronics Content Catalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default='Online'])[default=$contentCatalog:Online]
+$emailResource = jar:org.training.core.setup.CoreSystemSetup&/trainingcore/import/emails
+$emailPackageName = com.app.questions.emailcontext
+$lang = en
+
+INSERT_UPDATE EmailPageTemplate; $contentCV[unique = true]; uid[unique = true]                 ; name                            ; active; frontendTemplateName       ; subject(code)                        ; htmlTemplate(code)                ; restrictedPageTypes(code)
+                               ;                          ; QuestionsNotificationEmailTemplate ; Questions Notification Template ; true  ; questionsNotificationEmail ; email-questions-notification-subject ; email-questions-notification-body ; EmailPage
+
+
+INSERT_UPDATE ContentSlotName; name[unique = true]; template(uid, $contentCV)[unique = true][default = 'QuestionsNotificationEmailTemplate']; validComponentTypes(code)
+                             ; SiteLogo           ;                                                                                         ; LogoComponent
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                          ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'QuestionsNotificationEmailTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-QuestionsNotificationEmailTemplate ; SiteLogo               ;                                                                                             ; EmailSiteLogoSlot                          ; true
+
+# Email velocity templates
+INSERT_UPDATE RendererTemplate; code[unique = true]                  ; contextClass; rendererType(code)[default = 'velocity']
+                              ; email-questions-notification-body    ; $emailPackageName.QuestionNotificationEmailContext
+                              ; email-questions-notification-subject ; $emailPackageName.QuestionNotificationEmailContext
+
+UPDATE RendererTemplate; code[unique = true]                  ; description[lang = $lang]            ; templateScript[lang = $lang, translator = de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+                       ; email-questions-notification-body    ; Questions Notification Body Email    ; $emailResource/email-questions-notification-body.vm
+                       ; email-questions-notification-subject ; Questions Notification Email Subject ; $emailResource/email-questions-notification-subject.vm
+
+INSERT_UPDATE EmailPage; $contentCV[unique = true]; uid[unique = true]         ; name                         ; masterTemplate(uid, $contentCV)    ; defaultPage; approvalStatus(code)[default = 'approved']; fromEmail[lang = en]; fromName[lang = en]
+                       ;                          ; QuestionsNotificationEmail ; Questions Notification Email ; QuestionsNotificationEmailTemplate ; false      ;                                           ; vdmlsndr@yandex.ru  ; From Tester
+
+#Cron Job For Email Notification
+INSERT_UPDATE QuestionNotificationCronJob; code[unique = true]     ; job(code)          ; singleExecutable; active
+                                         ; notifyAboutNewQuestions ; questionsNotifyJob ; false           ; true

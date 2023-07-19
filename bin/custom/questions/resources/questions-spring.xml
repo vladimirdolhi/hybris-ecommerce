@@ -82,4 +82,22 @@
 		  parent="variantCommerceSearchResultProductPopulator">
 	</bean>
 
+
+	<bean id="questionsNotificationEmailProcessDefinitionResource"
+		  class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+		<property name="resource" value="classpath:/questions/processes/questionsEmailNotificationProcess.xml"/>
+	</bean>
+
+	<bean id="generateQuestionsNotificationEmail" parent="abstractGenerateEmailAction">
+		<property name="frontendTemplateName" value="QuestionsNotificationEmailTemplate"/>
+	</bean>
+
+	<bean id="questionsNotifyEmailContext" class="com.app.questions.emailcontext.QuestionNotificationEmailContext"
+		  parent="abstractEmailContext"
+		  scope="prototype"/>
+
+	<bean id="questionsNotifyJob" class="com.app.questions.job.QuestionNotificationJob" parent="abstractJobPerformable"/>
+
+	<bean id="questionService" class="com.app.questions.service.impl.DefaultQuestionService"/>
+
 </beans>

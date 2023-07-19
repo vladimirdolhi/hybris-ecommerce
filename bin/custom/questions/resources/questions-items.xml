@@ -9,6 +9,9 @@
 <items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:noNamespaceSchemaLocation="items.xsd">
 
+	<collectiontypes>
+		<collectiontype code="QuestionsList" elementtype="Question" autocreate="true" generate="false" type="list"/>
+	</collectiontypes>
 	<relations>
 		<relation code="ProductToQuestions" localized="false">
 			<sourceElement type="Product" qualifier="product" cardinality="one"/>
@@ -50,6 +53,21 @@
 				</attribute>
 				<attribute qualifier="fontSize" type="java.lang.Integer">
 					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype code="QuestionNotificationProcess" extends="StoreFrontCustomerProcess">
+			<attributes>
+				<attribute qualifier="questions" type="QuestionsList">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+		<itemtype code="QuestionNotificationCronJob" generate="true" autocreate="true" extends="CronJob">
+			<attributes>
+				<attribute qualifier="lastNotificationDate" type="java.util.Date">
+					<persistence type="property"/>
+					<modifiers write="true" read="true" optional="true"/>
 				</attribute>
 			</attributes>
 		</itemtype>

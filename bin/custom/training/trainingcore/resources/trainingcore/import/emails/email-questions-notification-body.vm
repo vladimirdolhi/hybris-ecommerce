@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>Hello, there are new questions!</h1>
+
+<table>
+    <thead>
+    <tr>
+        <td>Question</td>
+        <td>Answer</td>
+    </tr>
+    </thead>
+    <tbody>
+        #foreach($question in ${ctx.questions})
+        <tr>
+            <td>$question.question</td>
+            <td>$question.answer</td>
+        </tr>
+        #end
+    </tbody>
+</table>
+
+</body>
+</html>
