@@ -82,4 +82,30 @@
 		  parent="variantCommerceSearchResultProductPopulator">
 	</bean>
 
+	<alias name="searchProductWarrantyYearsPopulator" alias="commerceSearchResultProductPopulator"/>
+	<bean id="searchProductWarrantyYearsPopulator"
+		  class="com.app.questions.populator.SearchProductWarrantyYearsPopulator"
+		  parent="variantCommerceSearchResultProductPopulator">
+	</bean>
+
+	<bean id="productWarrantyYearsProvider"
+		  class="com.app.questions.provider.ProductWarrantyYearsProvider"
+		  parent="abstractPropertyFieldValueProvider">
+		<property name="fieldNameProvider" ref="solrFieldNameProvider"/>
+	</bean>
+
+	<bean id="productWarrantyYearsPopulator"
+		  class="com.app.questions.populator.ProductWarrantyYearsPopulator"
+		  parent="baseProductPopulator"/>
+
+	<bean class="com.app.questions.provider.ProductWarrantyYearsFacetDisplayNameProvider"
+		  id="productWarrantyYearsFacetDisplayNameProvider"/>
+
+	<bean parent="configurablePopulatorModification">
+		<property name="target" ref="productConfiguredPopulator" />
+		<property name="keyType" value="de.hybris.platform.commercefacades.product.ProductOption" />
+		<property name="key" value="WARRANTY" />
+		<property name="add" ref="productWarrantyYearsPopulator" />
+	</bean>
+
 </beans>

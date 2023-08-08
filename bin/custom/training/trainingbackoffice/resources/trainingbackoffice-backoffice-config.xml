@@ -3,7 +3,8 @@
  Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
 -->
 <config xmlns="http://www.hybris.com/cockpit/config"
-	xmlns:na="http://www.hybris.com/cockpitng/config/notifications">
+	xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
+	xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
 
 	<context merge-by="module" component="editorareaactions" type="Consignment">
 		<y:actions xmlns:y="http://www.hybris.com/cockpit/config/hybris">
@@ -21,6 +22,16 @@
 	            <na:message>hmc.action.confirmpickup.success</na:message>
 	        </na:notifications>
 	   </na:notification-area>
+	</context>
+
+	<context type="Product" component="editor-area" merge-by="type">
+		<editorArea:editorArea>
+			<editorArea:tab name="hmc.tab.product.warranty" position="1">
+				<editorArea:section name="hmc.section.product.warranty" merge-mode="append">
+					<editorArea:attribute qualifier="warrantyYears" label="Warranty Years"/>
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
 	</context>
 
 </config>

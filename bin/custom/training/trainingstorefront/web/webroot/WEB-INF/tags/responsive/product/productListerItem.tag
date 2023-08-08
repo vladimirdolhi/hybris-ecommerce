@@ -52,6 +52,11 @@
 			<p>Questions: ${product.questionsCount}</p>
 		</c:if>
 
+		<c:if test="${not empty product.warrantyYears}">
+			<br/>
+			<p>Warranty years: ${product.warrantyYears}</p>
+		</c:if>
+
 		<c:set var="product" value="${product}" scope="request"/>
 		<c:set var="addToCartText" value="${addToCartText}" scope="request"/>
 		<c:set var="addToCartUrl" value="${addToCartUrl}" scope="request"/>

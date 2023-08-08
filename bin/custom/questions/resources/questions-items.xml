@@ -53,5 +53,13 @@
 				</attribute>
 			</attributes>
 		</itemtype>
+		<itemtype code="Product" autocreate="false" generate="false">
+			<attributes>
+				<attribute qualifier="warrantyYears" type="java.lang.Integer">
+					<persistence type="property"/>
+					<modifiers read="true" write="true" search="true"/>
+				</attribute>
+			</attributes>
+		</itemtype>
 	</itemtypes>
 </items>
