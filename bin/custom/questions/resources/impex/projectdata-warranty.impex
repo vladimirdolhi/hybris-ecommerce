@@ -1,0 +1,12 @@
+$productCatalog = electronicsProductCatalog
+$productCatalogName = Electronics Product Catalog
+
+$catalogVersion = catalogversion(catalog(id[default=$productCatalog]), version[default='Staged'])[unique=true, default=$productCatalog:Staged]
+$supercategories = supercategories(code, $catalogVersion)
+$baseProduct = baseProduct(code, $catalogVersion)
+$approved = approvalstatus(code)[default='approved']
+
+INSERT_UPDATE Product; code[unique = true]; $catalogVersion; warrantyYears
+                     ; 300938             ;                ; 1
+                     ; 553637             ;                ; 2
+                     ; 2053266            ;                ; 3

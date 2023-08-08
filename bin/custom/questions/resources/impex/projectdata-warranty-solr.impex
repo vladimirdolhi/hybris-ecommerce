@@ -1,0 +1,36 @@
+$productCatalog = __PRODUCT_CATALOG_NAME__
+$catalogVersions = catalogVersions(catalog(id), version);
+$serverConfigName =
+$indexConfigName =
+$searchConfigName =
+$facetSearchConfigName =
+$facetSearchConfigDescription =
+$searchIndexNamePrefix =
+$solrIndexedType = electronicsProductType
+$indexBaseSite =
+$indexLanguages = ja, en, de, zh
+$indexCurrencies = JPY, USD
+
+#Facet
+INSERT_UPDATE SolrValueRangeSet; name[unique = true]      ; qualifier     ; type; solrValueRanges(&rangeValueRefID)
+                               ; electronicsWarrantyRange ; warrantyFacet ; int ; rangeRefW1,rangeRefW2,rangeRefW3,rangeRefW4,rangeRefW5
+
+INSERT_UPDATE SolrValueRange; &rangeValueRefID; solrValueRangeSet(name)[unique = true]; name[unique = true]; from; to
+                            ; rangeRefW1      ; electronicsWarrantyRange              ; no warranty        ; 0   ; 0
+                            ; rangeRefW2      ; electronicsWarrantyRange              ; 1 year             ; 1   ; 1
+                            ; rangeRefW3      ; electronicsWarrantyRange              ; 2 years            ; 2   ; 2
+                            ; rangeRefW4      ; electronicsWarrantyRange              ; 3 years            ; 3   ; 3
+                            ; rangeRefW5      ; electronicsWarrantyRange              ; more               ; 4   ; 999
+
+
+
+INSERT_UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; name[unique = true]; type(code); sortableType(code); currency[default = false]; localized[default = false]; multiValue[default = false]; facet[default = true]; facetType(code); facetSort(code); priority; visible; useForSpellchecking[default = false]; useForAutocomplete[default = false]; fieldValueProvider           ; facetDisplayNameProvider                     ; customFacetSortProvider; topValuesProvider; rangeSets(name)
+                                 ; $solrIndexedType                          ; warrantyYears      ; int       ; int               ;                          ;                           ;                            ;                      ; MultiSelectOr  ; Alpha          ; 5000    ; true   ;                                     ;                                    ; productWarrantyYearsProvider ; productWarrantyYearsFacetDisplayNameProvider ;                        ;                  ; electronicsWarrantyRange
+
+INSERT_UPDATE SolrSearchQueryProperty; indexedProperty(name, solrIndexedType(identifier))[unique = true]; facet[default = true]; facetType(code); priority; facetDisplayNameProvider                     ; facetSortProvider; facetTopValuesProvider; includeInResponse[default = true]; searchQueryTemplate(name, indexedType(identifier))[unique = true][default = DEFAULT:$solrIndexedType]
+                                     ; warrantyYears:$solrIndexedType                                   ;                      ; MultiSelectOr  ; 5000    ; productWarrantyYearsFacetDisplayNameProvider ;                  ;                       ;                                  ;
+
+UPDATE SolrIndexedProperty; solrIndexedType(identifier)[unique = true]; displayName; name[unique = true];
+                          ; $solrIndexedType                          ; "Warranty" ; warrantyYears
+
+

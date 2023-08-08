@@ -121,7 +121,7 @@ public class ProductPageController extends AbstractPageController
 			throws CMSItemNotFoundException, UnsupportedEncodingException
 	{
 		final List<ProductOption> extraOptions = Arrays.asList(ProductOption.VARIANT_MATRIX_BASE, ProductOption.VARIANT_MATRIX_URL,
-				ProductOption.VARIANT_MATRIX_MEDIA);
+				ProductOption.VARIANT_MATRIX_MEDIA, ProductOption.WARRANTY);
 
 		final ProductData productData = productFacade.getProductForCodeAndOptions(productCode, extraOptions);
 
